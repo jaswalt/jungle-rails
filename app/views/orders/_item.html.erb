@@ -1,0 +1,10 @@
+<% item_total = item.product.price * item.quantity %>
+<% @cart_total += item_total %>
+<tr>
+  <td><%= image_tag item.product.image %></td>
+  <td><h4><%= item.product.name %></h4></td>
+  <td><%= item.product.description %></td>
+  <td><%= item.product.price %></td>
+  <td><%= item.quantity %></td>
+  <td><%= item_totl %></td>
+</tr>
