@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for your order!</h1>
+    <p>
+      Here are the details of your order:<br>
+    </p>
+    <div class="panel panel-default items">
+      <% @total = 0 %>
+      <% @order.line_items.each do |line_item| %>
+      <% product = Product.find_by(id: line_item.product_id) %>
+      <% item_total = product.price * line_item.quantity %>
+      <%= product.name %> <%= line_item.quantity %>
+        <strong>$<%= item_total %></strong><br>
+        <% @total += item_total %>
+      <% end %>
+      <br>
+      <strong> TOTAL: $<%= @total %></strong>
+    </div>
+    <p>Thanks for shopping with Jungle and have a great day!</p>
+  </body>
+</html>
