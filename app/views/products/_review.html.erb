@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h5 class="panel-title"><%= review.user.first_name %> <%= review.user.last_name %>'s Review </h5>
+  </div>
+  <div class="panel-body">
+    <p><%= review.rating %>/5</p>
+    <p><%= review.description %></p>
+  </div>
+
+  <% if current_user.id == review.user_id %>
+    <div>
+      <%= link_to fa_icon('trash'),
+          product_review_path(@product, review),
+          class: 'btn btn-sm btn-danger',
+          method: :delete,
+          data: { confirm: "Do you really want to delete your review?" } %>
+    </div>
+  <% end %>
+</div>

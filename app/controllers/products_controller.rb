@@ -2,10 +2,14 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all.order(created_at: :desc)
+    @review = Review.all
   end
 
   def show
     @product = Product.find params[:id]
+    @reviews = @product.reviews
+    @review = Review.new
+    @user_reviews = Review.where(user_id: current_user)
   end
 
 end
